@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fd9c6be6b2909544c98085d0c337bfcc
+timeCreated: 1533163467
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 137981
+  packageName: Simple 2D Template
+  packageVersion: 1.2
+  assetPath: Assets/IndieMarc/PlatformerDemo/Tilemap/Black/tilemap_9.asset
+  uploadId: 322227

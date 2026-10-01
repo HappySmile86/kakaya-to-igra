@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9af0c3bd5a1094a14bb01bb8770f4365
+timeCreated: 1541610498
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 137981
+  packageName: Simple 2D Template
+  packageVersion: 1.2
+  assetPath: Assets/IndieMarc/PlatformerDemo/Tilemap/PlatformerPalette.prefab
+  uploadId: 322227

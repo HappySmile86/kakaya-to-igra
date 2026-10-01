@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5279d6c84667d634a8cae15c7ed54172
+timeCreated: 1536609370
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 137981
+  packageName: Simple 2D Template
+  packageVersion: 1.2
+  assetPath: Assets/IndieMarc/PlatformerDemo/Sprites/Character/CharacterAnimator.controller
+  uploadId: 322227
