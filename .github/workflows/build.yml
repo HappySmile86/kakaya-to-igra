@@ -11,11 +11,11 @@ permissions:
 
 jobs:
   testProject:
-    name: Test in ${{ lab_opd.testMode }}
+    name: Test in ${{ matrix.testMode }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      lab_opd:
+      matrix:
         projectPath:
           - ./
         testMode:
@@ -29,8 +29,8 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          path: ${{ lab_opd.projectPath }}/Library
-          key: Library-${{ lab_opd.projectPath }}
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
 
@@ -41,25 +41,25 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          projectPath: ${{ lab_opd.projectPath }}
-          testMode: ${{ lab_opd.testMode }}
-          artifactsPath: ${{ lab_opd.testMode }}-artifacts
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ lab_opd.testMode }} Test Results
+          checkName: ${{ matrix.testMode }} Test Results
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Test results for ${{ lab_opd.testMode }}
+          name: Test results for ${{ matrix.testMode }}
           path: ${{ steps.tests.outputs.artifactsPath }}
 
   buildForAllDesiredPlatforms:
     needs: testProject
-    name: Build for ${{ lab_opd.targetPlatform }}
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      lab_opd:
+      matrix:
         targetPlatform:
           - StandaloneWindows64
 
@@ -72,7 +72,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: Library
-          key: Library-${{ lab_opd.targetPlatform }}
+          key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
 
       - uses: game-ci/unity-builder@v4
@@ -81,9 +81,9 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ lab_opd.targetPlatform }}
+          targetPlatform: ${{ matrix.targetPlatform }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Build-${{ lab_opd.targetPlatform }}
-          path: build/${{ lab_opd.targetPlatform }}
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
